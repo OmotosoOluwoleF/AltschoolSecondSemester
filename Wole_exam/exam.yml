@@ -1,0 +1,12 @@
+---
+- hosts: slave
+  become: true
+  tasks:
+    - name: Transfer the bash script to the slave node
+      copy:
+        src: deploy_lamp.sh
+        dest: /wole_exam/cloud_lamp.sh
+        mode: '0755'
+
+    - name: Execute the bash script on the slave node
+      shell: /wole_exam/cloud_lamp.sh
