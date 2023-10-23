@@ -1,0 +1,14 @@
+---
+- name: run master server
+  hosts: all
+  become: true
+  tasks:
+    - name: Check uptime into uptime.log
+      cron:
+        name: uptime checker
+        minute: '0'
+        hour: '*/12'
+        day: '*'
+        month: '*'
+        weekday: '*'
+        job: uptime >> /var/www/uptime.log
