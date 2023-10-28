@@ -1,12 +1,12 @@
 ---
-- hosts: slave
-  become: true
+- name: Execute bash script on master server
+  hosts: slave
   tasks:
-    - name: Transfer the bash script to the slave node
+    - name: Copy bash script to slave
       copy:
-        src: deploy_lamp.sh
-        dest: /wole_exam/cloud_lamp.sh
-        mode: '0755'
+        src: cloud_lamp.sh
+        dest: /Wole_exam/cloud_lamp.sh
+        mode: 0755
 
-    - name: Execute the bash script on the slave node
-      shell: /wole_exam/cloud_lamp.sh
+    - name: Run bash script on master server
+      shell: sh /Wole_exam/cloud_lamp.sh
